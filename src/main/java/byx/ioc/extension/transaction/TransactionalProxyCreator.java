@@ -10,11 +10,11 @@ import byx.util.jdbc.JdbcUtils;
 import java.util.Arrays;
 
 /**
- * Object回调器：创建事务增强代理对象
+ * 创建事务增强代理对象
  *
  * @author byx
  */
-public class TransactionObjectCallback implements ObjectCallback {
+public class TransactionalProxyCreator implements ObjectCallback {
     @Override
     public Object afterObjectWrap(ObjectCallbackContext ctx) {
         // 如果对象的某个方法标注了Transaction注解，则返回事务增强代理对象
