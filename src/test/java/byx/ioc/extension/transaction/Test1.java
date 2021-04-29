@@ -17,15 +17,15 @@ public class Test1 {
         assertSame(service.getJdbcUtils(), jdbcUtils);
 
         service.service1();
-        assertEquals(100, jdbcUtils.querySingleValue("select value from A", Integer.class));
-        assertEquals(0, jdbcUtils.querySingleValue("select value from B", Integer.class));
+        assertEquals(100, (int) jdbcUtils.querySingleValue("select value from A"));
+        assertEquals(0, (int) jdbcUtils.querySingleValue("select value from B"));
 
         try {
             service.service2();
         } catch (Exception ignored) {}
 
-        assertEquals(90, jdbcUtils.querySingleValue("select value from A", Integer.class));
-        assertEquals(0, jdbcUtils.querySingleValue("select value from B", Integer.class));
+        assertEquals(90, (int)jdbcUtils.querySingleValue("select value from A"));
+        assertEquals(0, (int)jdbcUtils.querySingleValue("select value from B"));
 
         jdbcUtils.update("update A set value = 100");
         jdbcUtils.update("update B set value = 0");
